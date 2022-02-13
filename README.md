@@ -31,6 +31,8 @@ Nix templates for Odoo development servers
 4. Edit odoo.conf
    - addons_path
    - db_host (absolute path to postgres socket-dir)
+   - http_port
+   - longpolling_port
    - Other dirs/files (geoip, screenshots)
 
 5. Copy/add odoo (+ enterprise) dir
