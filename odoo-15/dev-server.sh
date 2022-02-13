@@ -98,32 +98,34 @@ COMMAND="${1:-}"
 
 case "$COMMAND" in
     install)
-	# lorri shell
-	command_postgres_init
-	poetry install
+        # lorri shell
+        command_postgres_init
+        poetry install
 	# poetry run python -m pip install --upgrade pip &
 	# poetry run pip install -U -r addons/requirements.txt
         ;;
     start)
-	# Also separate commands: poetry install, odoo shell
+        # Also separate commands: poetry install, odoo shell
         command_postgres &
-	poetry run ./odoo/odoo-bin -c odoo.conf
-	echo "started..."
+        poetry run ./odoo/odoo-bin -c odoo.conf
+        ;;
+    shell)
+        poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
     postgres)
         command_postgres "$@"
-        ;;
-    purge)
-        command_purge
-        ;;
-    dump-schema)
-        command_dump_schema "$@"
         ;;
     psql)
         command_psql "$@"
         ;;
     pg_dump)
         command_pg_dump "$@"
+        ;;
+    purge)
+        command_purge
+        ;;
+    dump-schema)
+        command_dump_schema "$@"
         ;;
     await_postgres)
         await_postgres "$@"

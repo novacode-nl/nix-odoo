@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "test-odoo-15"
+name = "odoo-15"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Bob Leers <bob@novacode.nl>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

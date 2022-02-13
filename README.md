@@ -49,6 +49,7 @@ Nix templates for Odoo development servers
 ## FEATURES
 
 - PostgreSQL listens (serves) from socket directory
+- File `odoo-VERSION/pyproject.toml` (created from odoo `requirements.txt`)
 
 
 ## TODO
@@ -80,3 +81,5 @@ Nix templates for Odoo development servers
 
 2. wkhtmltopdf (0.12.5)
    See file `shell.nix`
+
+3. Generate `odoo-VERSION/pyproject.toml` from odoo `requirements.txt`
