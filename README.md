@@ -56,10 +56,11 @@ Nix templates for Odoo development servers
 
 1. Unclutter the root-dir
 
+```
    nix-odoo/
-       .git (THIS IS A GIT REPO)
+       .git # this git repo
        odoo-15/
-           # will become a GIT REPO, eg. to share
+           # will become a git repo, eg. to share
            .gitignore (odoo, postgres, data)
            dev-server.sh
            pyproject.toml
@@ -77,7 +78,7 @@ Nix templates for Odoo development servers
                .gitempty
 	   scripts/
                prepare.sql
-
+```
 
 2. wkhtmltopdf (0.12.5)
    See file `shell.nix`
