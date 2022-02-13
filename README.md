@@ -17,6 +17,7 @@ Nix templates for Odoo development servers
 
 `$ ./dev-server.sh psql`
 
+
 ## INSTALL (bootstrap)
 
 1. git clone https://github.com/novacode-nl/nix-odoo
@@ -43,6 +44,12 @@ Nix templates for Odoo development servers
 6. `$ lorri shell` (STILL NEEDED with direnv ?)
 7. `$ ./dev-server.sh install`
 8. `$ ./dev-server.sh start`
+
+
+## FEATURES
+
+- PostgreSQL listens (serves) from socket directory
+
 
 ## TODO
 
