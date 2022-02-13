@@ -61,7 +61,7 @@ Nix templates for Odoo development servers
        .git # this git repo
        odoo-15/
            # will become a git repo, eg. to share
-           .gitignore (odoo, postgres, data)
+           .gitignore # odoo, postgres, data (liquid dirs, files)
            dev-server.sh
            pyproject.toml
            README.md
