@@ -1,7 +1,4 @@
-# nix-odoo
-Nix templates for Odoo development servers
-
-## USAGE
+# USAGE
 
 (!) **After INSTALL**
 
@@ -17,7 +14,7 @@ Nix templates for Odoo development servers
 
 `$ ./dev-server.sh psql`
 
-## INSTALL (bootstrap)
+# INSTALL (bootstrap)
 
 1. git clone https://github.com/novacode-nl/nix-odoo
 
@@ -42,7 +39,7 @@ Nix templates for Odoo development servers
 7. `$ ./dev-server.sh install`
 8. `$ ./dev-server.sh start`
 
-## TODO
+# TODO
 
 1. Unclutter the root-dir
 
