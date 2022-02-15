@@ -93,39 +93,69 @@ command_with_postgres() {
     "$@"
 }
 
+command_virtualenv_create() {
+    if [ ! -d ".venv" ]; then
+	virtualenv .venv
+    fi
+}
+
+command_pip_install_requirements() {
+    # odoo/requirements.txt
+    if [ -d odoo ] && [ -f odoo/requirements.txt ]; then
+        echo "START: pip install -U -r odoo/requirements.txt"
+        ./.venv/bin/pip install -U -r odoo/requirements.txt
+        echo "DONE: pip install -U -r odoo/requirements.txt"
+    else
+        echo "ERROR: File odoo/requirements.txt not found."
+    fi
+
+    # addons/requirements.txt
+    if [ -d addons ] && [ -f addons/requirements.txt ]; then
+        echo "START: pip install -U -r addons/requirements.txt"
+        ./.venv/bin/pip install -U -r addons/requirements.txt
+        echo "DONE: pip install -U -r odoo/requirements.txt"
+    else
+        echo "INFO: File addons/requirements.txt not found."
+    fi
+}
+
 COMMAND="${1:-}"
 [ -n "$COMMAND" ] && shift
 
 case "$COMMAND" in
     install)
-        # lorri shell
-        command_postgres_init
-        poetry install
+	# lorri shell
+	command_postgres_init
+	command_virtualenv_create
+        command_pip_install_requirements
+        ## poetry
+	# poetry install
 	# poetry run python -m pip install --upgrade pip &
 	# poetry run pip install -U -r addons/requirements.txt
         ;;
-    start)
-        # Also separate commands: poetry install, odoo shell
-        command_postgres &
-        poetry run ./odoo/odoo-bin -c odoo.conf
+    pip_requirements)
+        command_pip_install_requirements
         ;;
-    shell)
-        poetry run ./odoo/odoo-bin shell -c odoo.conf
+    start)
+        command_postgres &
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf
+        ## poetry
+        # poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
     postgres)
         command_postgres "$@"
-        ;;
-    psql)
-        command_psql "$@"
-        ;;
-    pg_dump)
-        command_pg_dump "$@"
         ;;
     purge)
         command_purge
         ;;
     dump-schema)
         command_dump_schema "$@"
+        ;;
+    psql)
+        command_psql "$@"
+        ;;
+    pg_dump)
+        command_pg_dump "$@"
         ;;
     await_postgres)
         await_postgres "$@"
@@ -135,6 +165,8 @@ case "$COMMAND" in
 	;;
     *)
         echo "Available commands:"
+	echo "  install "
+        echo "      Install/update: Nix shell, PostgreSQL, Python packages etc."
         echo "  start "
         echo "      Starts the development webserver (and the database server)"
         echo "  psql"
