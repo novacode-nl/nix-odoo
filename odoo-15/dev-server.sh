@@ -133,7 +133,7 @@ case "$COMMAND" in
 	# poetry run python -m pip install --upgrade pip &
 	# poetry run pip install -U -r addons/requirements.txt
         ;;
-    pip_requirements)
+    pip_install)
         command_pip_install_requirements
         ;;
     start)
@@ -167,6 +167,11 @@ case "$COMMAND" in
         echo "Available commands:"
 	echo "  install "
         echo "      Install/update: Nix shell, PostgreSQL, Python packages etc."
+	echo "  pip_install "
+        echo "      Install Python (pip) requirements."
+        echo "      Commands executed (if requirements.txt file exist):"
+        echo "      $ pip install -U -r odoo/requirements.txt"
+        echo "      $ pip install -U -r addons/requirements.txt"
         echo "  start "
         echo "      Starts the development webserver (and the database server)"
         echo "  psql"
@@ -178,7 +183,7 @@ case "$COMMAND" in
         echo "  with_postgres"
         echo "      Starts the postgres server and executes runs the remaining arguments as a command line."
         echo "      The postgres server is shut down again once that command line terminates."
-        echo "       Preserves the exit code of the command line."
+        echo "      Preserves the exit code of the command line."
         echo "  dump-schema"
         echo "      Update the schema.sql file with the current database state"
         echo "  purge"
