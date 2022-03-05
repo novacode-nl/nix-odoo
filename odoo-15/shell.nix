@@ -1,6 +1,25 @@
 { pkgs ? import <nixpkgs> {} }:
 
-pkgs.mkShell {
+######################
+# wkhtmltopdf (0.12.5)
+######################
+# Instructions:
+# https://lazamar.co.uk/nix-versions/?package=wkhtmltopdf&version=0.12.5&fullName=wkhtmltopdf-0.12.5&keyName=wkhtmltopdf&revision=f577872afb1bd17aa43419152230aabfc8c8d5bf&channel=nixos-20.03#instructions
+#
+# Use tarball, instead of git, to speed up the store index!
+let
+  # Channel	nixos-20.03
+  pkgs_20_03 = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/f577872afb1bd17aa43419152230aabfc8c8d5bf.tar.gz";
+  }) {};
+  # pkgs_20_03 = import (builtins.fetchGit {
+  #   # Descriptive name to make the store path easier to identify
+  #   name = "NixOs-20.03";
+  #   url = "https://github.com/NixOS/nixpkgs/";
+  #   ref = "refs/heads/nixos-20.03";
+  #   rev = "f577872afb1bd17aa43419152230aabfc8c8d5bf";
+  # }) {};
+in pkgs.mkShell {
   buildInputs = [
     # keep this line if you use bash
     pkgs.bashInteractive
@@ -22,10 +41,9 @@ pkgs.mkShell {
 
     pkgs.postgresql_13
 
-    # See TODO in README
-    # pkgs.wkhtmltopdf (12.5.0)
-    
     #(pkgs.python38.withPackages (ps: [ ps.pypdf2 ])
     # propagatedBuildInputs = with pkgs.python38Packages; [ poetry ];
+
+    pkgs_20_03.wkhtmltopdf
   ];
 }
