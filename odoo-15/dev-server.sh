@@ -113,7 +113,7 @@ command_pip_install_requirements() {
     if [ -d addons ] && [ -f addons/requirements.txt ]; then
         echo "START: pip install -U -r addons/requirements.txt"
         ./.venv/bin/pip install -U -r addons/requirements.txt
-        echo "DONE: pip install -U -r odoo/requirements.txt"
+        echo "DONE: pip install -U -r addons/requirements.txt"
     else
         echo "INFO: File addons/requirements.txt not found."
     fi
