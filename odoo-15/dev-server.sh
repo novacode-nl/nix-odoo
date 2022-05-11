@@ -183,6 +183,8 @@ case "$COMMAND" in
         echo "      Starts the development webserver (and the database server)"
         echo "  psql"
         echo "      Starts a psql shell (postgres server must already be running)"
+        echo "  psql_postgres"
+        echo "      Starts a psql shell in postgres database (postgres server must already be running)"
         echo "  postgres"
         echo "      Starts just the postgres server (useful for backend development)"
         echo "  await_postgres"
