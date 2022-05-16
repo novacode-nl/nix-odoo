@@ -146,6 +146,10 @@ case "$COMMAND" in
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
+    test)
+        command_postgres &
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf -d $1 --test-enable --stop-after-init -i ${@:2}
+        ;;
     postgres)
         command_postgres "$@"
         ;;
@@ -181,6 +185,9 @@ case "$COMMAND" in
         echo "      $ pip install -U -r addons/requirements.txt"
         echo "  start "
         echo "      Starts the development webserver (and the database server)"
+        echo "  test "
+        echo "      Run tests. First arg is database, next args are module(s))"
+        echo "      ./dev-server.sh test odoo_test module_1 module_2"
         echo "  psql"
         echo "      Starts a psql shell (postgres server must already be running)"
         echo "  psql_postgres"
