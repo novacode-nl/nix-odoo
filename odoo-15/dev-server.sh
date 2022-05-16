@@ -148,7 +148,7 @@ case "$COMMAND" in
         ;;
     test)
         command_postgres &
-	.venv/bin/python ./odoo/odoo-bin -c odoo.conf -d $1 --test-enable --stop-after-init -i ${@:2}
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf -d $1 --test-enable --stop-after-init -i "${@: 2}"
         ;;
     postgres)
         command_postgres "$@"
