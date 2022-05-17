@@ -26,7 +26,7 @@ postgres_start() {
     $START_POSTGRES -D "$DATADIR"
 }
 
-command_psql_postgres() {
+command_psql_db() {
     psql -h "$PG" -U "${DB_USER}" -d "${DB_NAME}" "$@"
 }
 
@@ -162,8 +162,8 @@ case "$COMMAND" in
     psql)
         command_psql "$@"
         ;;
-    psql_postgres)
-        command_psql_postgres "$@"
+    psql_db)
+        command_psql_db "$@"
         ;;
     pg_dump)
         command_pg_dump "$@"
