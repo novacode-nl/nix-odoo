@@ -26,12 +26,12 @@ postgres_start() {
     $START_POSTGRES -D "$DATADIR"
 }
 
-command_psql_db() {
-    psql -h "$PG" -U "${DB_USER}" -d "${DB_NAME}" "$@"
-}
-
 command_psql() {
     psql -h "$PG" -U "${DB_USER}" "$@"
+}
+
+command_psql_postgres() {
+    psql -h "$PG" -U "${DB_USER}" -d "${DB_NAME}" "$@"
 }
 
 await_postgres() {
@@ -189,7 +189,7 @@ case "$COMMAND" in
         echo "      Run tests. First arg is database, next args are module(s))"
         echo "      ./dev-server.sh test odoo_test module_1 module_2"
         echo "  psql"
-        echo "      Starts a psql shell (postgres server must already be running)"
+        echo "      Starts a psql shell, requires databasename (postgres server must already be running)"
         echo "  psql_postgres"
         echo "      Starts a psql shell in postgres database (postgres server must already be running)"
         echo "  postgres"
