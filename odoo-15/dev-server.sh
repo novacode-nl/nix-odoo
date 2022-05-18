@@ -31,7 +31,7 @@ command_psql() {
 }
 
 command_psql_postgres() {
-    psql -h "$PG" -U "${DB_USER}" -d "${DB_NAME}" "$@"
+    psql -h "$PG" -U "${USER}" -d "${DB_NAME}" "$@"
 }
 
 await_postgres() {
@@ -162,8 +162,8 @@ case "$COMMAND" in
     psql)
         command_psql "$@"
         ;;
-    psql_db)
-        command_psql_db "$@"
+    psql_postgres)
+        command_psql_postgres "$@"
         ;;
     pg_dump)
         command_pg_dump "$@"
