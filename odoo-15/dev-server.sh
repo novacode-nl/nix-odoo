@@ -150,6 +150,10 @@ case "$COMMAND" in
         command_postgres &
 	.venv/bin/python ./odoo/odoo-bin -c odoo.conf -d $1 --test-enable --stop-after-init -i "${@: 2}"
         ;;
+    upgrade)
+        command_postgres &
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf -d $1 --stop-after-init -u "${@: 2}"
+        ;;
     postgres)
         command_postgres "$@"
         ;;
@@ -186,8 +190,15 @@ case "$COMMAND" in
         echo "  start "
         echo "      Starts the development webserver (and the database server)"
         echo "  test "
-        echo "      Run tests. First arg is database, next args are module(s))"
+        echo "      Run tests."
+        echo "      First arg is a database."
+        echo "      Next args are module(s)."
         echo "      ./dev-server.sh test odoo_test module_1 module_2"
+        echo "  upgrade "
+        echo "       Upgrade module(s)."
+        echo "       First arg is a database."
+        echo "       Next arg is a comma-separated list of modules to update before running the server."
+        echo "      ./dev-server.sh upgrade odoo_test module_1,module_2"
         echo "  psql"
         echo "      Starts a psql shell, requires databasename (postgres server must already be running)"
         echo "  psql_postgres"
