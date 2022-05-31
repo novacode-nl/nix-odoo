@@ -11,6 +11,8 @@ let
   # Channel	nixos-20.03
   pkgs_20_03 = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/f577872afb1bd17aa43419152230aabfc8c8d5bf.tar.gz";
+    # wkhtmltopdf 0.12.6
+    # url = "https://github.com/NixOS/nixpkgs/archive/f6cc8cb29a3909136af1539848026bd41276e2ac.tar.gz";
   }) {};
   # pkgs_20_03 = import (builtins.fetchGit {
   #   # Descriptive name to make the store path easier to identify
@@ -44,6 +46,10 @@ in pkgs.mkShell {
     #(pkgs.python38.withPackages (ps: [ ps.pypdf2 ])
     # propagatedBuildInputs = with pkgs.python38Packages; [ poetry ];
 
-    pkgs_20_03.wkhtmltopdf
+    # pkgs_20_03.wkhtmltopdf
   ];
+
+  shellHook = ''
+    export PATH=result/local/bin:$PATH
+  '';
 }

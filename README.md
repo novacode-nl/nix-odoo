@@ -42,6 +42,7 @@ Nix templates for Odoo development servers
    `$ git clone https://github.com/odoo/odoo.git --branch 15.0 --single-branch`
 
 6. `$ lorri shell` (STILL NEEDED with direnv ?)
+7. `$ nix-build wkhtmltopdf.nix`
 7. `$ ./dev-server.sh install`
 8. `$ ./dev-server.sh start`
 
