@@ -1,5 +1,8 @@
 { pkgs ? import <nixpkgs> {} }:
 
+# wkhtmltopdf 0.12.5 (with patched qt)
+# More info: https://github.com/odoo/odoo/wiki/Wkhtmltopdf
+
 let
   pkgs_libjpeg_8d = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/19f768a97808da4c8700ae24513ab557801be12c.tar.gz";
