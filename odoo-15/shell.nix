@@ -37,16 +37,14 @@ in pkgs.mkShell {
 
     # pkgs.poetry
     # pkgs.python38Packages.poetry
-    pkgs.python38Packages.pip
-    pkgs.python38Packages.setuptools
-    pkgs.python38Packages.virtualenv
+    pkgs.python39Packages.pip
+    pkgs.python39Packages.setuptools
+    pkgs.python39Packages.virtualenv
 
     pkgs.postgresql_13
 
     #(pkgs.python38.withPackages (ps: [ ps.pypdf2 ])
     # propagatedBuildInputs = with pkgs.python38Packages; [ poetry ];
-
-    # pkgs_20_03.wkhtmltopdf
   ];
 
   shellHook = ''
