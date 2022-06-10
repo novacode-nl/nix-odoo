@@ -39,7 +39,7 @@ Nix templates for Odoo development servers
 5. Copy/add odoo (+ enterprise) dir
 
    Example:
-   `$ git clone https://github.com/odoo/odoo.git --branch 15.0 --single-branch --depth 1`
+   `$ git clone https://github.com/odoo/odoo.git --branch 15.0 --depth 1`
 
 6. `$ lorri shell` (STILL NEEDED with direnv ?)
 7. `$ nix-build wkhtmltopdf.nix`
