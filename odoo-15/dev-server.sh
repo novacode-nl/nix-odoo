@@ -142,7 +142,7 @@ case "$COMMAND" in
         ;;
     start)
         command_postgres &
-	.venv/bin/python ./odoo/odoo-bin -c odoo.conf
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf "$@"
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
