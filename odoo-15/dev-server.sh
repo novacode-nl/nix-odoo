@@ -118,8 +118,13 @@ command_pip_install_requirements() {
         echo "START: pip install -U -r addons/requirements.txt"
         ./.venv/bin/pip install -U -r addons/requirements.txt
         echo "DONE: pip install -U -r addons/requirements.txt"
-    else
-        echo "INFO: File addons/requirements.txt not found."
+    fi
+
+    # file from path (arg)
+    if [ "$@" ]; then
+        echo "START: pip install -U -r $@"
+        ./.venv/bin/pip install -U -r "$@"
+        echo "DONE: pip install -U -r $@"
     fi
 }
 
@@ -138,7 +143,7 @@ case "$COMMAND" in
 	# poetry run pip install -U -r addons/requirements.txt
         ;;
     pip_install)
-        command_pip_install_requirements
+        command_pip_install_requirements "$@"
         ;;
     start)
         command_postgres &
