@@ -9,6 +9,12 @@ Nix templates for Odoo development servers
 
 `$ ./dev-server.sh start`
 
+When you want to import a database which takes a long time, use:
+
+`$ ./dev-server.sh start --limit-time-real=-1`
+
+This ensures the importer won't be killed for taking too long.
+
 **Other commands, just...**
 
 `$ ./dev-server.sh`
