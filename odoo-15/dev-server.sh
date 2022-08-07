@@ -147,6 +147,8 @@ case "$COMMAND" in
         ;;
     start)
         command_postgres &
+	# Workaround for https://github.com/odoo/odoo/issues/33479
+	source .venv/bin/activate
 	.venv/bin/python ./odoo/odoo-bin -c odoo.conf "$@"
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
