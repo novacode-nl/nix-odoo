@@ -145,7 +145,7 @@ case "$COMMAND" in
         ;;
     shell)
         command_postgres &
-	.venv/bin/python ./odoo/odoo-bin shell -c odoo.conf
+	.venv/bin/python ./odoo/odoo-bin shell -c odoo.conf "$@"
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
@@ -198,6 +198,8 @@ case "$COMMAND" in
         echo "      $ pip install -U -r addons/requirements.txt"
         echo "  shell "
         echo "      Starts the Odoo shell (Python repl) with the database server."
+        echo "      Example with database (-d DATABASE)"
+        echo "      ./dev-server.sh shell -d DATABASE"
         echo "  start "
         echo "      Starts the Odoo webserver with the database server."
         echo "  test "
