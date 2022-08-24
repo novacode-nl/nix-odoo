@@ -114,14 +114,12 @@ command_pip_install_requirements() {
     fi
 
     # addons/requirements.txt
+    # addons/requirements.txt
     if [ -d addons ] && [ -f addons/requirements.txt ]; then
         echo "START: pip install -U -r addons/requirements.txt"
         ./.venv/bin/pip install -U -r addons/requirements.txt
         echo "DONE: pip install -U -r addons/requirements.txt"
-    fi
-
-    # file from path (arg)
-    if [ "$@" ]; then
+    elif [ "$@" ]; then
         echo "START: pip install -U -r $@"
         ./.venv/bin/pip install -U -r "$@"
         echo "DONE: pip install -U -r $@"
@@ -145,13 +143,17 @@ case "$COMMAND" in
     pip_install)
         command_pip_install_requirements "$@"
         ;;
-    start)
+    shell)
         command_postgres &
-	# Workaround for https://github.com/odoo/odoo/issues/33479
-	source .venv/bin/activate
-	.venv/bin/python ./odoo/odoo-bin -c odoo.conf "$@"
+	.venv/bin/python ./odoo/odoo-bin shell -c odoo.conf
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
+        ;;
+    start)
+        command_postgres &
+	.venv/bin/python ./odoo/odoo-bin -c odoo.conf
+        ## poetry
+        # poetry run ./odoo/odoo-bin start -c odoo.conf
         ;;
     test)
         command_postgres &
@@ -194,8 +196,10 @@ case "$COMMAND" in
         echo "      Commands executed (if requirements.txt file exist):"
         echo "      $ pip install -U -r odoo/requirements.txt"
         echo "      $ pip install -U -r addons/requirements.txt"
+        echo "  shell "
+        echo "      Starts the Odoo shell (Python repl) with the database server."
         echo "  start "
-        echo "      Starts the development webserver (and the database server)"
+        echo "      Starts the Odoo webserver with the database server."
         echo "  test "
         echo "      Run tests."
         echo "      First arg is a database."
