@@ -42,15 +42,22 @@ This ensures the importer won't be killed for taking too long.
    - longpolling_port
    - Other dirs/files (geoip, screenshots)
 
-5. Copy/add odoo (+ enterprise) dir
+5. Add odoo (+ enterprise) dir
 
    Example:
    `$ git clone https://github.com/odoo/odoo.git --branch 15.0 --depth 1`
 
-6. `$ lorri shell` (STILL NEEDED with direnv ?)
-7. `$ nix-build wkhtmltopdf.nix`
-7. `$ ./dev-server.sh install`
-8. `$ ./dev-server.sh start`
+6. Add project AKA addons dir
+
+    **The `dev-server.sh` script expects this as directory name `addons`.**
+
+    Example:
+   `$ git clone https://github.com/novacode-nl/novacode.git --branch 15.0 addons`
+
+7. `$ lorri shell` (STILL NEEDED with direnv ?)
+8. `$ nix-build wkhtmltopdf.nix`
+9. `$ ./dev-server.sh install`
+10. `$ ./dev-server.sh start`
 
 
 ## FEATURES
