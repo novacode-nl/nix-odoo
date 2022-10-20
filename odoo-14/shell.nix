@@ -1,5 +1,5 @@
 ##########################################################
-# nixpkgs 21.11
+# nixpkgs 21.05
 #
 # Use tarball instead of git, to speed up the store index!
 ##########################################################
@@ -8,16 +8,11 @@
 # https://lazamar.co.uk/nix-versions/?package=wkhtmltopdf&version=0.12.5&fullName=wkhtmltopdf-0.12.5&keyName=wkhtmltopdf&revision=f577872afb1bd17aa43419152230aabfc8c8d5bf&channel=nixos-20.03#instructions
 
 { pkgs ? import (builtins.fetchTarball {
-  url = "https://github.com/NixOS/nixpkgs/archive/a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31.tar.gz";
+  url = "https://github.com/NixOS/nixpkgs/archive/7e9b0dff974c89e070da1ad85713ff3c20b0ca97.tar.gz";
   sha256 = "162dywda2dvfj1248afxc45kcrg83appjd0nmdb541hl7rnncf02";
 }) {} }:
 
-let
-  pkgs_22_05 = import (builtins.fetchTarball {
-    # pudb
-    url = "https://github.com/NixOS/nixpkgs/archive/22.05.tar.gz";
-  }) {};
-in pkgs.mkShell {
+pkgs.mkShell {
   buildInputs = [
     # keep this line if you use bash
     pkgs.bashInteractive
@@ -28,12 +23,9 @@ in pkgs.mkShell {
     pkgs.openldap
 
     # Python
-    pkgs.python39Packages.pip
-    pkgs.python39Packages.setuptools
-    pkgs.python39Packages.virtualenv
-    # Python debuggers
-    pkgs.python38Packages.ipdb
-    pkgs_22_05.python38Packages.pudb
+    pkgs.python38Packages.pip
+    pkgs.python38Packages.setuptools
+    pkgs.python38Packages.virtualenv
 
     # PostgreSQL
     pkgs.postgresql_13
