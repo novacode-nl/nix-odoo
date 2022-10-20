@@ -26,6 +26,11 @@ postgres_start() {
     $START_POSTGRES -D "$DATADIR"
 }
 
+postgres_start_listen() {
+    local DATADIR=${1:-$PGDATA}
+    postgres -c unix_socket_directories=${PG} -D "$DATADIR"
+}
+
 command_psql() {
     psql -h "$PG" -U "${DB_USER}" "$@"
 }
@@ -84,6 +89,12 @@ command_postgres() {
     PGDATA="${1:-$PGDATA}"
     [ -d  "$PGDATA" ] || postgres_init
     postgres_start
+}
+
+command_postgres_listen() {
+    PGDATA="${1:-$PGDATA}"
+    [ -d  "$PGDATA" ] || postgres_init
+    postgres_start_listen
 }
 
 command_with_postgres() {
@@ -167,6 +178,9 @@ case "$COMMAND" in
     postgres)
         command_postgres "$@"
         ;;
+    postgres_listen)
+        command_postgres_listen "$@"
+        ;;
     purge)
         command_purge
         ;;
@@ -219,6 +233,8 @@ case "$COMMAND" in
         echo "      Starts a psql shell in postgres database (postgres server must already be running)"
         echo "  postgres"
         echo "      Starts just the postgres server (useful for backend development)"
+        echo "  postgres_listen"
+        echo "      Starts just the postgres server and listen on all addresses (useful for the upgrade.odoo.com script)"
         echo "  await_postgres"
         echo "      Wait (with timeout) until the postgres server is available (useful for CI mostly)"
         echo "  with_postgres"
