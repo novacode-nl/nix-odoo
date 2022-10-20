@@ -65,6 +65,27 @@ This ensures the importer won't be killed for taking too long.
 - PostgreSQL listens (serves) from socket directory
 - File `odoo-VERSION/pyproject.toml` (created from odoo `requirements.txt`)
 
+## UPGRADE - upgrade.odoo.com
+
+Having PostgreSQL running on a Unix socket causes issues with Odoo's upgrade script.\
+The upgrade script excepts PostgreSQL connection at `/run/postgresql/.s.PGSQL.5432`.
+
+### Current workaround
+
+**Terminal (tty) 1**
+
+```
+cd nix-odoo/TARGET
+./dev-server postgres_tcp
+```
+
+**Terminal (tty) 2**
+```
+sudo su
+mkdir /run/postgresql
+ln -s nix-odoo/TARGET/postgres/.s.PGSQL.5432 /run/postgresql/
+python <(curl -s https://upgrade.odoo.com/upgrade) test -d <your db name> -t <target version>
+```
 
 ## TODO
 
