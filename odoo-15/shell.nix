@@ -32,8 +32,8 @@ in pkgs.mkShell {
     pkgs.python39Packages.setuptools
     pkgs.python39Packages.virtualenv
     # Python debuggers
-    pkgs.python38Packages.ipdb
-    pkgs_22_05.python38Packages.pudb
+    pkgs.python39Packages.ipdb
+    # pkgs_22_05.python39Packages.pudb
 
     # PostgreSQL
     pkgs.postgresql_13
