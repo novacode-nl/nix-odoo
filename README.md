@@ -100,6 +100,12 @@ Run it and follow output (logging)
 
 `python <(curl -s https://upgrade.odoo.com/upgrade) test -d <your db name> -t <target version>`
 
+### Post actions (TARGET)
+
+1. Copy the migrated filestore directory into `nix-odoo/TARGET/data`.
+2. Export dump (with filestore)
+3. Restore dump in new version
+
 ## TODO
 
 1. Unclutter the root-dir
