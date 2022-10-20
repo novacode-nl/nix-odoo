@@ -67,25 +67,38 @@ This ensures the importer won't be killed for taking too long.
 
 ## UPGRADE - upgrade.odoo.com
 
+#### Filestore
+
+The upgrade script expects the old filestore located under the OS user it's `~/.local/share/Odoo/filestore/DB_NAME` directory.
+So copy the filestore into that directory with same database name (`DB_NAME`).
+
+#### PostgreSQL
+
 Having PostgreSQL running on a Unix socket causes issues with Odoo's upgrade script.\
 The upgrade script excepts PostgreSQL connection at `/run/postgresql/.s.PGSQL.5432`.
 
-### Current workaround
+**Current workaround**
 
-**Terminal (tty) 1**
+_**Terminal (tty) 1**_
 
 ```
 cd nix-odoo/TARGET
 ./dev-server postgres_tcp
 ```
 
-**Terminal (tty) 2**
+_**Terminal (tty) 2**_
+
 ```
 sudo su
 mkdir /run/postgresql
 ln -s nix-odoo/TARGET/postgres/.s.PGSQL.5432 /run/postgresql/
-python <(curl -s https://upgrade.odoo.com/upgrade) test -d <your db name> -t <target version>
 ```
+
+#### Upgrade
+
+Run it and follow output (logging)
+
+`python <(curl -s https://upgrade.odoo.com/upgrade) test -d <your db name> -t <target version>`
 
 ## TODO
 
