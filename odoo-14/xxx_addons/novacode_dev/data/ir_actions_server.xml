@@ -4,14 +4,13 @@ See LICENSE file for full licensing details. -->
 
 <odoo>
     <record id="action_formio_builder_reset_formio_version" model="ir.actions.server">
-        <field name="name">Reset formio.js version</field>
+        <field name="name">novacode_dev - Reset form builders (formio)</field>
         <field name="type">ir.actions.server</field>
         <field name="state">code</field>
-        <field name="model_id" ref="formio.model_formio_builder"/>
-        <field name="binding_model_id" ref="formio.model_formio_builder"/>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="binding_model_id" ref="base.model_ir_actions_server"/>
         <field name="code">
-for rec in records:
-  rec.write({'formio_version_id': env.ref('formio.version_dummy').id})
+env['formio.builder'].search([]).write({'formio_version_id': env.ref('formio.version_dummy').id})
         </field>
     </record>
 </odoo>
