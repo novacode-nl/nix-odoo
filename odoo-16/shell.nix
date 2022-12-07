@@ -29,6 +29,7 @@ pkgs.mkShell {
     pkgs.python39Packages.virtualenv
     # Python debuggers
     pkgs.python39Packages.ipdb
+    pkgs.python39Packages.pyopenssl
 
     # PostgreSQL
     pkgs.postgresql_14
