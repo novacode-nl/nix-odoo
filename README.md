@@ -28,10 +28,10 @@ This ensures the importer won't be killed for taking too long.
 
 1. git clone https://github.com/novacode-nl/nix-odoo
 
-2. `$ cp -R nix-odoo/odoo-15 TARGET`
+2. `$ cp -R nix-odoo/odoo-16 TARGET`
 
    Example:
-   `$ cp -R nix-odoo/odoo-15 novacode-15`
+   `$ cp -R nix-odoo/odoo-16 novacode-16`
 
 3. `$ cd TARGET`
 
@@ -45,14 +45,14 @@ This ensures the importer won't be killed for taking too long.
 5. Add odoo (+ enterprise) dir
 
    Example:
-   `$ git clone https://github.com/odoo/odoo.git --branch 15.0 --depth 1`
+   `$ git clone https://github.com/odoo/odoo.git --branch 16.0 --depth 1`
 
 6. Add project AKA addons dir
 
     **The `dev-server.sh` script expects this as directory name `addons`.**
 
     Example:
-   `$ git clone https://github.com/novacode-nl/novacode.git --branch 15.0 addons`
+   `$ git clone https://github.com/novacode-nl/novacode.git --branch 16.0 addons`
 
 7. `$ lorri shell` (STILL NEEDED with direnv ?)
 8. `$ nix-build wkhtmltopdf.nix`
@@ -113,7 +113,7 @@ Run it and follow output (logging)
 ```
    nix-odoo/
        .git # this git repo
-       odoo-15/
+       odoo-16/
            # will become a git repo, eg. to share
            .gitignore # odoo, postgres, data (liquid dirs, files)
            dev-server.sh
@@ -135,6 +135,6 @@ Run it and follow output (logging)
 ```
 
 2. wkhtmltopdf (0.12.5)
-   See file `shell.nix`
+   See file `wkhtmltopdf.nix`
 
 3. Generate `odoo-VERSION/pyproject.toml` from odoo `requirements.txt`
