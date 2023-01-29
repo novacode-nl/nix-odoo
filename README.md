@@ -54,10 +54,9 @@ This ensures the importer won't be killed for taking too long.
     Example:
    `$ git clone https://github.com/novacode-nl/novacode.git --branch 16.0 addons`
 
-7. `$ lorri shell` (STILL NEEDED with direnv ?)
-8. `$ nix-build wkhtmltopdf.nix`
-9. `$ ./dev-server.sh install`
-10. `$ ./dev-server.sh start`
+7. `$ nix-build wkhtmltopdf.nix`
+8. `$ ./dev-server.sh install`
+9. `$ ./dev-server.sh start`
 
 
 ## FEATURES
