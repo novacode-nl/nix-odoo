@@ -156,7 +156,7 @@ case "$COMMAND" in
         ;;
     shell)
         command_postgres &
-	.venv/bin/python ./odoo/odoo-bin shell -c odoo.conf "$@"
+	.venv/bin/python ./odoo/odoo-bin shell -c odoo.conf -d $1
         ## poetry
         # poetry run ./odoo/odoo-bin shell -c odoo.conf
         ;;
@@ -213,8 +213,8 @@ case "$COMMAND" in
         echo "      $ pip install -U -r addons/requirements.txt"
         echo "  shell "
         echo "      Starts the Odoo shell (Python repl) with the database server."
-        echo "      Example with database (-d DATABASE)"
-        echo "      ./dev-server.sh shell -d DATABASE"
+        echo "      First arg is a database."
+        echo "      ./dev-server.sh shell DATABASE"
         echo "  start "
         echo "      Starts the Odoo webserver with the database server."
         echo "  test "
@@ -223,8 +223,8 @@ case "$COMMAND" in
         echo "      Next args are module(s)."
         echo "      ./dev-server.sh test odoo_test module_1 module_2"
         echo "  upgrade "
-        echo "       Upgrade module(s)."
-        echo "       First arg is a database."
+        echo "      Upgrade module(s)."
+        echo "      First arg is a database."
         echo "       Next arg is a comma-separated list of modules to update before running the server."
         echo "      ./dev-server.sh upgrade odoo_test module_1,module_2"
         echo "  psql"
