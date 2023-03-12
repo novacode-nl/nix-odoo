@@ -2,4 +2,5 @@
 # See LICENSE file for full licensing details.
 
 from . import ir_attachment
+from . import mail_thread
 
