@@ -24,6 +24,7 @@ pkgs.mkShell {
     pkgs.openldap
 
     # Python
+    pkgs.python39Packages.libsass
     pkgs.python39Packages.pip
     pkgs.python39Packages.setuptools
     pkgs.python39Packages.virtualenv
