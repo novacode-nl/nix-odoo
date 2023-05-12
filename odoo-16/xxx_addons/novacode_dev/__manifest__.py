@@ -4,14 +4,18 @@
 {
     'name': 'Nova Code | Dev Tools',
     'summary': 'Nova Code | Dev Tools',
-    'version': '16.0.1.0.2',
+    'version': '16.0.1.0.3',
     'license': 'LGPL-3',
     'author': 'Nova Code',
     'website': 'https://www.novacode.nl',
     'category': 'Extra Tools',
-    'depends': ['base'],
+    'depends': [
+        'base',
+        'base_technical_features',
+    ],
     'data': [
         'data/ir_actions_server.xml'
     ],
+    'auto_install': True,
     'application': False,
 }
