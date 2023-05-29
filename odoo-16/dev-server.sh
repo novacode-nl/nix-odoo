@@ -64,13 +64,6 @@ postgres_init() {
 
     postgres --single -D "$PGDATA_NEW" postgres < "${PG}/../data/prepare.sql" >/dev/null
 
-    if [ ! "$SKIP_INIT_SCHEMA" ]; then
-        $START_POSTGRES -D "$PGDATA_NEW" &
-        await_postgres
-        kill $!
-        wait $! || true >/dev/null
-    fi
-
     mv "$PGDATA_NEW" "$PGDATA"
     sync
 }
