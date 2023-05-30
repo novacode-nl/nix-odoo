@@ -11,6 +11,8 @@
     'category': 'Extra Tools',
     'depends': [
         'base',
+        'mail',
+        # Community
         'base_technical_features',
     ],
     'data': [
