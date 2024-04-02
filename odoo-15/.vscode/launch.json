@@ -9,15 +9,14 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/bin/python",
-            // "console": "externalTerminal",
-            "program": "${workspaceRoot}/odoo/odoo-bin",
+            "pythonPath": "${userHome}/odoo/projects/PROJECT/.venv/bin/python",
+            "program": "${userHome}/odoo/projects/PROJECT/odoo/odoo-bin",
              "args": [
                 "--config=odoo.conf",
             ],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${userHome}/odoo/projects/PROJECT",
             "env": {},
-            "envFile": "${workspaceRoot}/.venv",
+            "envFile": "${userHome}/odoo/projects/PROJECT/.venv",
             "debugOptions": [
                 "RedirectOutput"
             ]
