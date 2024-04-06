@@ -131,14 +131,27 @@ command_pip_install_requirements() {
 }
 
 command_pre_commit_install_hooks() {
+    ./.venv/bin/pip install -U py
     if [ -d addons ]; then
         echo "START: pre-commit install (Git pre-commit hooks) ..."
+        if [ -f addons/.pre-commit-config.yaml ]; then
+            echo "Executing pre-commit install in Git checkout (dir): addons ..."
+            cd addons
+            pre-commit install
+            pre-commit install --hook-type commit-msg
+            pre-commit autoupdate
+            cd ..
+        else
+            echo "Skip pre-commit install. No .pre-commit-config.yaml found or not a Git clone: addons"
+        fi
         for dir in addons/*; do
-            if [ -d $dir ] && [ -f $dir/pre-commit-config.yaml ]; then
+            if [ -d $dir ] && [ -f $dir/.pre-commit-config.yaml ]; then
                 echo "Executing pre-commit install in Git checkout (dir): $dir ..."
-                $dir/pre-commit install
-                $dir/pre-commit install --hook-type commit-msg
-                $dir/pre-commit autoupdate
+                cd $dir
+                pre-commit install
+                pre-commit install --hook-type commit-msg
+                pre-commit autoupdate
+                cd ..
             elif [ -d $dir ]; then
                 echo "Skip pre-commit install. No .pre-commit-config.yaml found or not a Git clone: $dir"
             fi

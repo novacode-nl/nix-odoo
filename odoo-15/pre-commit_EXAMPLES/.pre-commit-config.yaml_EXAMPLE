@@ -9,6 +9,13 @@ repos:
   rev:  v0.19.1
   hooks:
     - id: gitlint
+- repo: https://github.com/OCA/pylint-odoo
+  rev: v9.1.2 # may be a tag or commit hash
+  hooks:
+    # Add to your .pylintrc file:
+    # [MASTER]
+    # load-plugins=pylint_odoo
+    - id: pylint_odoo
 # - repo: https://github.com/astral-sh/ruff-pre-commit
 #   # Ruff version.
 #   rev: v0.3.5
