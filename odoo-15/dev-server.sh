@@ -137,14 +137,20 @@ command_pre_commit_install_hooks() {
         for dir in */; do
             cd $dir
             echo ""
-            echo "pre-commit install in Git checkout (dir): $dir"
-            pre-commit install
-            pre-commit install --hook-type commit-msg
-            pre-commit autoupdate
-            cd ..
+            if [ -f .pre-commit-config.yaml ]; then
+                echo "pre-commit install in Git checkout (dir): $dir"
+                pre-commit install
+                pre-commit install --hook-type commit-msg
+                pre-commit autoupdate
+                cd ..
+            else
+                echo "Skip pre-commit install. No .pre-commit-config.yaml and/or not a Git clone: $dir"
+                cd ..
+            fi
         done;
         echo ""
-        echo "DONE: pre-commit install (Git pre-commit hooks)"
+        echo "DONE: pre-commit install (Git pre-commit hooks) ..."
+        echo ""
     fi
 }
 
