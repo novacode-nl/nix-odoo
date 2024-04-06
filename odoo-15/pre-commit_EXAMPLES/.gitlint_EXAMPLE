@@ -1,2 +1,3 @@
 [title-match-regex]
-regex=^\[task-\]|\[ticket-\]*
+regex=^\[task-\]|\[ticket-\]|\[issue-\]*
+# regex=^\[.+\]
