@@ -28,10 +28,12 @@ This ensures the importer won't be killed for taking too long.
 
 1. git clone https://github.com/novacode-nl/nix-odoo
 
-2. `$ cp -R nix-odoo/odoo-16 TARGET`
+2. `$ cp -R nix-odoo/odoo-VERSION TARGET`
+
+    Where `VERSION` represents the Odoo version.
 
    Example:
-   `$ cp -R nix-odoo/odoo-16 novacode-16`
+   `$ cp -R nix-odoo/odoo-VERSION novacode-VERSION`
 
 3. `$ cd TARGET`
 
@@ -54,9 +56,25 @@ This ensures the importer won't be killed for taking too long.
     Example:
    `$ git clone https://github.com/novacode-nl/novacode.git --branch 16.0 addons`
 
-7. `$ nix-build wkhtmltopdf.nix`
-8. `$ ./dev-server.sh install`
-9. `$ ./dev-server.sh start`
+7. (Optional) Add Git**pre-commit (i)** and **Gitlint (ii)** config files into the addons directory
+
+    (i) pre-commit framework:
+    - https://pre-commit.com
+
+    (ii) Gitlint (Git commit message linter):
+    - https://jorisroovers.com/gitlint/latest/
+    - https://github.com/jorisroovers/gitlint
+
+    Example, copy from examples:
+
+```
+cp ../odoo-VERSION/pre-commit_EXAMPLES/.gitlint_EXAMPLE ./addons/.gitlint
+cp ../odoo-VERSION/pre-commit_EXAMPLES/.pre-commit-config.yaml_EXAMPLE ./addons/.pre-commit-config.yaml
+```
+
+8. `$ nix-build wkhtmltopdf.nix`
+9. `$ ./dev-server.sh install`
+10. `$ ./dev-server.sh start`
 
 
 ## FEATURES

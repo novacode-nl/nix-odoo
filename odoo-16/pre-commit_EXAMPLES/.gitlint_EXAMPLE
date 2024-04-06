@@ -1,0 +1,2 @@
+[title-match-regex]
+regex=^\[task-\]|\[ticket-\]*
