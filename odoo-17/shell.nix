@@ -25,6 +25,7 @@ pkgs.mkShell {
 
     # Python
     pkgs.python310Packages.libsass
+    # pkgs.python310Packages.pyopenssl
     pkgs.python310Packages.pip
     # pkgs.python310Packages.pypdf2
     pkgs.python310Packages.python-ldap
@@ -34,18 +35,16 @@ pkgs.mkShell {
     pkgs.python310Packages.debugpy
     pkgs.python310Packages.ipdb
 
-    # pkgs.python310Packages.pyopenssl
-
     # PostgreSQL
     pkgs.postgresql_14
 
-    # VS Code extensions
+    # Required for VS Code extensions
     pkgs.stdenv.cc.cc.lib
   ];
 
   shellHook = ''
     export PATH=result/local/bin:$PATH
-    # Required for VS Code extensions
+    # Required for VS Code extensions, when VS Code from nix shell
     export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
       pkgs.stdenv.cc.cc
     ]}

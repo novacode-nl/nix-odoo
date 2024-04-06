@@ -33,15 +33,23 @@ in pkgs.mkShell {
     pkgs.python39Packages.setuptools
     pkgs.python39Packages.virtualenv
     # Python debuggers
+    pkgs.python310Packages.debugpy
     pkgs.python39Packages.ipdb
     pkgs.python39Packages.pyopenssl
     # pkgs_22_05.python39Packages.pudb
 
     # PostgreSQL
     pkgs.postgresql_13
+
+    # Required for VS Code extensions
+    pkgs.stdenv.cc.cc.lib
   ];
 
   shellHook = ''
     export PATH=result/local/bin:$PATH
+    # Required for VS Code extensions, when VS Code from nix shell
+    export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
+      pkgs.stdenv.cc.cc
+    ]}
   '';
 }
