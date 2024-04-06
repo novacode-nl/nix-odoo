@@ -56,7 +56,7 @@ This ensures the importer won't be killed for taking too long.
     Example:
    `$ git clone https://github.com/novacode-nl/novacode.git --branch 16.0 addons`
 
-7. (Optional) Add Git**pre-commit (i)** and **Gitlint (ii)** config files into the addons directory
+7. (Optional) Add Git **pre-commit (i)** and **Gitlint (ii)** config files into the addons directory
 
     (i) pre-commit framework:
     - https://pre-commit.com
@@ -67,8 +67,10 @@ This ensures the importer won't be killed for taking too long.
 
     Example, copy from examples:
 
-```
+```bash
 cp ../odoo-VERSION/pre-commit_EXAMPLES/.gitlint_EXAMPLE ./addons/.gitlint
+```
+```bash
 cp ../odoo-VERSION/pre-commit_EXAMPLES/.pre-commit-config.yaml_EXAMPLE ./addons/.pre-commit-config.yaml
 ```
 
