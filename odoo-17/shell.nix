@@ -18,6 +18,9 @@ pkgs.mkShell {
     # keep this line if you use bash
     pkgs.bashInteractive
 
+    # Git
+    pkgs.pre-commit
+
     # Odoo deps for requirements.txt
     pkgs.cyrus_sasl.dev
     pkgs.gsasl
@@ -48,8 +51,5 @@ pkgs.mkShell {
     export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
       pkgs.stdenv.cc.cc
     ]}
-    # pre-commit.com hooks
-    pre-commit install
-    pre-commit install --hook-type commit-msg
   '';
 }
