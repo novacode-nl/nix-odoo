@@ -33,7 +33,7 @@ in pkgs.mkShell {
     pkgs.python39Packages.setuptools
     pkgs.python39Packages.virtualenv
     # Python debuggers
-    pkgs.python310Packages.debugpy
+    pkgs.python39Packages.debugpy
     pkgs.python39Packages.ipdb
     pkgs.python39Packages.pyopenssl
     # pkgs_22_05.python39Packages.pudb
