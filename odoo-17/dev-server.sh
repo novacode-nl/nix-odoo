@@ -168,9 +168,9 @@ case "$COMMAND" in
     install)
 	# lorri shell
 	command_postgres_init
-        command_pre_commit_install_hooks
 	command_virtualenv_create
         command_pip_install_requirements
+        command_pre_commit_install_hooks
         ## poetry
 	# poetry install
 	# poetry run python -m pip install --upgrade pip &
