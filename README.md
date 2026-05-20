@@ -1,6 +1,8 @@
 # nix-odoo
 Nix templates for Odoo development servers
 
+## ARCHIVED IN FAVOR OF: https://github.com/novacode-nl/odoo-devbox
+
 ## USAGE
 
 (!) **After INSTALL**
